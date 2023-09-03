@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "fe96484f-2c00-4be4-9496-1018b13e6fbb",
+		"name": "Postman_collection_CATAAS_CRUD",
+		"description": "# Postman_collection_CAT_AS_A_SERVICE_CRUD\n\nPostman collection for the second challenge.\n\nIt contains the following HTTP requests to test the backend:\n\n---\n\n- **Req. 1: \"1_GET_ALL_CATS_DATA_BLOB_FORMAT\"**\n    \n\nGets all cats data in the database in a json format.\n\nNote: The cats are stored in BLOB (binary large objects).\n\n- **Req.2.1: \"2_GET_CAT_JSON_WITH_ID\"**\n    \n\nGets a specific cat (by id) in a json format (the image is in BLOB format).\n\n- **Req.2.2: \"2.2_GET_CAT_IMAGE_WITH_ID\"**\n    \n\nGets a specific cat (by id) but this time it shows the real cat image.\n\n- **Req.3: \"3_GET_RANDOM_CAT_IMAGE\"**\n    \n\nGets a random cat from the database, it displays the real cat image.\n\n- **Req.4:\"4_POST_CAT_DATA\"**\n    \n\nCreate a cat.\n\nInputs in the body:\n\n\\-> \"name\" (mandatory)\n\n\\-> \"metadata\" (optional)\n\n\\-> \"imageData\" (optional): this can be selected as a real image! Please check the instructions pdf for a step by step guide.\n\n\\-> mimeType (optional)\n\nOnly name is required (for testing purposes).\n\n- **Req. 5: \"5_DELETE_A_CAT_BY_ID\"**\n    \n\nDelete a cat by ID.\n\n- **Req.6: \"6_PUT_update_A_CAT_BY_ID\"**\n    \n\nUpdate a cat.\n\nFor more details please check the pdf with the instructions provided along with the code.\n\n---",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14436896"
+	},
+	"item": [
+		{
+			"name": "3_GET_RANDOM_CAT_IMAGE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/cataas/random",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_POST_CAT_DATA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "PeterBis",
+							"type": "text"
+						},
+						{
+							"key": "metadata",
+							"value": "{\"age\":2,\"color\":\"brown\",\"hello\"}",
+							"type": "text"
+						},
+						{
+							"key": "imageData",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/cataas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_POST_CAT_DATA Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "PeterBisss",
+							"type": "text"
+						},
+						{
+							"key": "metadata",
+							"value": "{\"age\":2,\"color\":\"brown\",\"hello\"}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "imageData",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/cataas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1_GET_CAT_JSON_WITH_ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/cataas/2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2_GET_CAT_IMAGE_WITH_ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/cataas/4/image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas",
+						"4",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1_GET_ALL_CATS_DATA_BLOB_FORMAT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/cataas/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5_DELETE_A_CAT_BY_ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/cataas/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6_PUT_update_A_CAT_BY_ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"NewName\"\n  \n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:3001/cataas/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"cataas",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

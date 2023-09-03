@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  mariadb:
+    image: mariadb:10.8.3
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_database
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    #volumes:
+    #  - mariadb_data:/var/lib/mysql
+
+  app:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_DATABASE: my_database
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_DIALECT: mariadb
+    depends_on:
+      - mariadb
+    #volumes:
+    #  - ./catImages:/usr/src/app/catImages
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+      

@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "4f8b938e-965b-4ff8-9821-90174d165f24",
+		"name": "Postman_collection_CAT_API_PROXY",
+		"description": "Postman collection for the first challenge: CAT API PROXY.\n\nIt contains the following HTTP requests:\n\n- **1st req : GET tags available from the external API (CATAAS).**\n    \n\n---\n\n- **2nd req : GET data about cats matching the filter tag.**\n    \n\n_PARAMETERS (3 mandatory):_\n\n1)tag : parameter tag that represents the type of cats we want (that contain this tag);\n\n2)omit: skip the x (int) first cats;\n\n3)total: the amount of cats we want to get as a result (if we can reach it);\n\n_AVAILABLE IN THE COLLECTION:_\n\n\\-> \"2nd_GET_filtered_data_by_tag_cute\": get filtered cat data based on the tag \"cute\", with 0 skips, and a total of 10 cats.\n\n\\-> \"2nd_GET_filtered_data_by_tag_cute_MAX_DATASET\": same as the one above, except that we use total = 1114, this will basically try to fetch a maximum of data that matches that filter by using the whole dataset proposed by the external API, and not just a total of 10 cats.\n\n\\-> \"2nd_GET_filtered_data_by_tag_drunk\": get filtered cat data based on the tag \"drunk\", with 0 skips, and a total of 10 cats.\n\n\\-> \"2nd_GET_filtered_data_by_tag_cute_WRONG_INPUT_TYPE\": same as the \"2nd_GET_filtered_data_by_tag_cute\" , but here we modify the total parameter and we put a string there \"wrongtype\" instead of an integer, it returns a message:\n\n\"message\": \"Invalid parameter: total should be an integer.\"\n\n---\n\n- **3rd req : GET data about cats in a structured format based on a substring.**\n    \n\nIt will find the tags that contain that substring and return the cat data. The data structure selected is a hashmap where the keys are the tags, and the values are the data itself.\n\n_PARAMETER (1 mandatory):_\n\n1)substr: parameter that corresponds to the substring.\n\n_AVAILABLE IN THE COLLECTION:_\n\n\\-> \"3rd_GET_data_Matching_substring_br\": get cat information based on the substring \"br\".\n\n\\-> \"3rd_GET_data_Matching_substring_pa\": get cat information based on the substring \"pa\".",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14436896"
+	},
+	"item": [
+		{
+			"name": "1s_GET_tags_",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/tags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3rd_GET_data_Matching_substring_br",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cats/match?string=br",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cats",
+						"match"
+					],
+					"query": [
+						{
+							"key": "string",
+							"value": "br"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3rd_GET_data_Matching_substring_pa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cats/match?string=pa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cats",
+						"match"
+					],
+					"query": [
+						{
+							"key": "string",
+							"value": "pa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2nd_GET_filtered_data_by_tag_cute",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cats/filter?tag=cute&omit=0&total=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cats",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "cute"
+						},
+						{
+							"key": "omit",
+							"value": "0"
+						},
+						{
+							"key": "total",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2nd_GET_filtered_data_by_tag_cute_WRONG_INPUT_TYPE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cats/filter?tag=cute&omit=0&total=wrongtype",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cats",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "cute"
+						},
+						{
+							"key": "omit",
+							"value": "0"
+						},
+						{
+							"key": "total",
+							"value": "wrongtype"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2nd_GET_filtered_data_by_tag_drunk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cats/filter?tag=drunk&omit=0&total=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cats",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "drunk"
+						},
+						{
+							"key": "omit",
+							"value": "0"
+						},
+						{
+							"key": "total",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2nd_GET_filtered_data_by_tag_cute_MAX_DATASET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cats/filter?tag=cute&omit=0&total=1114",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cats",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "cute"
+						},
+						{
+							"key": "omit",
+							"value": "0"
+						},
+						{
+							"key": "total",
+							"value": "1114"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
